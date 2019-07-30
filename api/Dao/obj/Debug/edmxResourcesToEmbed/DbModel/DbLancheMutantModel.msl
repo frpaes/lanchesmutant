@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LanchesMutantModelStoreContainer" CdmEntityContainer="Entities">
+    <FunctionImportMapping FunctionImportName="USP_TB_INGREDIENTE" FunctionName="LanchesMutantModel.Store.USP_TB_INGREDIENTE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LanchesMutantModel.USP_TB_INGREDIENTE_Result">
+          <ScalarProperty Name="COD_INGREDIENTE" ColumnName="COD_INGREDIENTE" />
+          <ScalarProperty Name="INGREDIENTE" ColumnName="INGREDIENTE" />
+          <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_TB_LANCHE" FunctionName="LanchesMutantModel.Store.USP_TB_LANCHE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LanchesMutantModel.USP_TB_LANCHE_Result">
+          <ScalarProperty Name="COD_LANCHE" ColumnName="COD_LANCHE" />
+          <ScalarProperty Name="LANCHE" ColumnName="LANCHE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_TB_LANCHE_INGREDIENTE" FunctionName="LanchesMutantModel.Store.USP_TB_LANCHE_INGREDIENTE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LanchesMutantModel.USP_TB_LANCHE_INGREDIENTE_Result">
+          <ScalarProperty Name="COD_LANCHE_INGREDIENTE" ColumnName="COD_LANCHE_INGREDIENTE" />
+          <ScalarProperty Name="COD_LANCHE" ColumnName="COD_LANCHE" />
+          <ScalarProperty Name="COD_INGREDIENTE" ColumnName="COD_INGREDIENTE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_TB_DOMINIO" FunctionName="LanchesMutantModel.Store.USP_TB_DOMINIO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LanchesMutantModel.USP_TB_DOMINIO_Result">
+          <ScalarProperty Name="COD_DOMINO" ColumnName="COD_DOMINO" />
+          <ScalarProperty Name="DOMINIO" ColumnName="DOMINIO" />
+          <ScalarProperty Name="DESC_DOMINIO" ColumnName="DESC_DOMINIO" />
+          <ScalarProperty Name="COD_TIPO_DOMINO" ColumnName="COD_TIPO_DOMINO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_CARREGAR_VENDAS_LANCHE" FunctionName="LanchesMutantModel.Store.USP_CARREGAR_VENDAS_LANCHE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LanchesMutantModel.USP_CARREGAR_VENDAS_LANCHE_Result">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="COD_LANCHE" ColumnName="COD_LANCHE" />
+          <ScalarProperty Name="LANCHE" ColumnName="LANCHE" />
+          <ScalarProperty Name="TIPO_LANCHE" ColumnName="TIPO_LANCHE" />
+          <ScalarProperty Name="INGREDIENTE" ColumnName="INGREDIENTE" />
+          <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_TB_VENDAS" FunctionName="LanchesMutantModel.Store.USP_TB_VENDAS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LanchesMutantModel.USP_TB_VENDAS_Result">
+          <ScalarProperty Name="COD_VENDAS" ColumnName="COD_VENDAS" />
+          <ScalarProperty Name="DESC_VENDAS" ColumnName="DESC_VENDAS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_TB_VENDAS_LANCHES" FunctionName="LanchesMutantModel.Store.USP_TB_VENDAS_LANCHES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LanchesMutantModel.USP_TB_VENDAS_LANCHES_Result">
+          <ScalarProperty Name="COD_VENDAS_LANCHE" ColumnName="COD_VENDAS_LANCHE" />
+          <ScalarProperty Name="COD_VENDAS" ColumnName="COD_VENDAS" />
+          <ScalarProperty Name="COD_LANCHE" ColumnName="COD_LANCHE" />
+          <ScalarProperty Name="COD_DOMINO" ColumnName="COD_DOMINO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DELETA_VENDAS_LANCHES" FunctionName="LanchesMutantModel.Store.USP_DELETA_VENDAS_LANCHES" />
+    <FunctionImportMapping FunctionImportName="USP_INSERIR_VENDAS_LANCHE" FunctionName="LanchesMutantModel.Store.USP_INSERIR_VENDAS_LANCHE" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LanchesMutantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="USP_CARREGAR_VENDAS_LANCHE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_DELETA_VENDAS_LANCHES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codigo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_INSERIR_VENDAS_LANCHE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cod_lanche" Type="varchar" Mode="In" />
+          <Parameter Name="descricao_venda" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_TB_DOMINIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_TB_INGREDIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_TB_LANCHE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_TB_LANCHE_INGREDIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_TB_VENDAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_TB_VENDAS_LANCHES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="LanchesMutantModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LanchesMutantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="USP_TB_INGREDIENTE" ReturnType="Collection(LanchesMutantModel.USP_TB_INGREDIENTE_Result)" />
+          <FunctionImport Name="USP_TB_LANCHE" ReturnType="Collection(LanchesMutantModel.USP_TB_LANCHE_Result)" />
+          <FunctionImport Name="USP_TB_LANCHE_INGREDIENTE" ReturnType="Collection(LanchesMutantModel.USP_TB_LANCHE_INGREDIENTE_Result)" />
+          <FunctionImport Name="USP_TB_DOMINIO" ReturnType="Collection(LanchesMutantModel.USP_TB_DOMINIO_Result)" />
+          <FunctionImport Name="USP_CARREGAR_VENDAS_LANCHE" ReturnType="Collection(LanchesMutantModel.USP_CARREGAR_VENDAS_LANCHE_Result)" />
+          <FunctionImport Name="USP_TB_VENDAS" ReturnType="Collection(LanchesMutantModel.USP_TB_VENDAS_Result)" />
+          <FunctionImport Name="USP_TB_VENDAS_LANCHES" ReturnType="Collection(LanchesMutantModel.USP_TB_VENDAS_LANCHES_Result)" />
+          <FunctionImport Name="USP_DELETA_VENDAS_LANCHES">
+          <Parameter Name="codigo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_INSERIR_VENDAS_LANCHE">
+            <Parameter Name="cod_lanche" Mode="In" Type="String" />
+            <Parameter Name="descricao_venda" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="USP_TB_INGREDIENTE_Result">
+          <Property Type="Int32" Name="COD_INGREDIENTE" Nullable="false" />
+          <Property Type="String" Name="INGREDIENTE" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="VALOR" Nullable="false" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="USP_TB_LANCHE_Result">
+          <Property Type="Int32" Name="COD_LANCHE" Nullable="false" />
+          <Property Type="String" Name="LANCHE" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="USP_TB_LANCHE_INGREDIENTE_Result">
+          <Property Type="Int32" Name="COD_LANCHE_INGREDIENTE" Nullable="false" />
+          <Property Type="Int32" Name="COD_LANCHE" Nullable="false" />
+          <Property Type="Int32" Name="COD_INGREDIENTE" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="USP_TB_DOMINIO_Result">
+          <Property Type="Int32" Name="COD_DOMINO" Nullable="false" />
+          <Property Type="String" Name="DOMINIO" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DESC_DOMINIO" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="COD_TIPO_DOMINO" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="USP_CARREGAR_VENDAS_LANCHE_Result">
+          <Property Type="Int32" Name="CODIGO" Nullable="false" />
+          <Property Type="Int32" Name="COD_LANCHE" Nullable="false" />
+          <Property Type="String" Name="LANCHE" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TIPO_LANCHE" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="INGREDIENTE" Nullable="true" />
+          <Property Type="Decimal" Name="VALOR" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="USP_TB_VENDAS_Result">
+          <Property Type="Int32" Name="COD_VENDAS" Nullable="false" />
+          <Property Type="String" Name="DESC_VENDAS" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="USP_TB_VENDAS_LANCHES_Result">
+          <Property Type="Int32" Name="COD_VENDAS_LANCHE" Nullable="false" />
+          <Property Type="Int32" Name="COD_VENDAS" Nullable="false" />
+          <Property Type="Int32" Name="COD_LANCHE" Nullable="true" />
+          <Property Type="Int32" Name="COD_DOMINO" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LanchesMutantModelStoreContainer" CdmEntityContainer="Entities" >
+          <FunctionImportMapping FunctionImportName="USP_TB_INGREDIENTE" FunctionName="LanchesMutantModel.Store.USP_TB_INGREDIENTE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LanchesMutantModel.USP_TB_INGREDIENTE_Result">
+                <ScalarProperty Name="COD_INGREDIENTE" ColumnName="COD_INGREDIENTE" />
+                <ScalarProperty Name="INGREDIENTE" ColumnName="INGREDIENTE" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_TB_LANCHE" FunctionName="LanchesMutantModel.Store.USP_TB_LANCHE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LanchesMutantModel.USP_TB_LANCHE_Result">
+                <ScalarProperty Name="COD_LANCHE" ColumnName="COD_LANCHE" />
+                <ScalarProperty Name="LANCHE" ColumnName="LANCHE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_TB_LANCHE_INGREDIENTE" FunctionName="LanchesMutantModel.Store.USP_TB_LANCHE_INGREDIENTE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LanchesMutantModel.USP_TB_LANCHE_INGREDIENTE_Result">
+                <ScalarProperty Name="COD_LANCHE_INGREDIENTE" ColumnName="COD_LANCHE_INGREDIENTE" />
+                <ScalarProperty Name="COD_LANCHE" ColumnName="COD_LANCHE" />
+                <ScalarProperty Name="COD_INGREDIENTE" ColumnName="COD_INGREDIENTE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_TB_DOMINIO" FunctionName="LanchesMutantModel.Store.USP_TB_DOMINIO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LanchesMutantModel.USP_TB_DOMINIO_Result">
+                <ScalarProperty Name="COD_DOMINO" ColumnName="COD_DOMINO" />
+                <ScalarProperty Name="DOMINIO" ColumnName="DOMINIO" />
+                <ScalarProperty Name="DESC_DOMINIO" ColumnName="DESC_DOMINIO" />
+                <ScalarProperty Name="COD_TIPO_DOMINO" ColumnName="COD_TIPO_DOMINO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_CARREGAR_VENDAS_LANCHE" FunctionName="LanchesMutantModel.Store.USP_CARREGAR_VENDAS_LANCHE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LanchesMutantModel.USP_CARREGAR_VENDAS_LANCHE_Result">
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="COD_LANCHE" ColumnName="COD_LANCHE" />
+                <ScalarProperty Name="LANCHE" ColumnName="LANCHE" />
+                <ScalarProperty Name="TIPO_LANCHE" ColumnName="TIPO_LANCHE" />
+                <ScalarProperty Name="INGREDIENTE" ColumnName="INGREDIENTE" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_TB_VENDAS" FunctionName="LanchesMutantModel.Store.USP_TB_VENDAS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LanchesMutantModel.USP_TB_VENDAS_Result">
+                <ScalarProperty Name="COD_VENDAS" ColumnName="COD_VENDAS" />
+                <ScalarProperty Name="DESC_VENDAS" ColumnName="DESC_VENDAS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_TB_VENDAS_LANCHES" FunctionName="LanchesMutantModel.Store.USP_TB_VENDAS_LANCHES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LanchesMutantModel.USP_TB_VENDAS_LANCHES_Result">
+                <ScalarProperty Name="COD_VENDAS_LANCHE" ColumnName="COD_VENDAS_LANCHE" />
+                <ScalarProperty Name="COD_VENDAS" ColumnName="COD_VENDAS" />
+                <ScalarProperty Name="COD_LANCHE" ColumnName="COD_LANCHE" />
+                <ScalarProperty Name="COD_DOMINO" ColumnName="COD_DOMINO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_DELETA_VENDAS_LANCHES" FunctionName="LanchesMutantModel.Store.USP_DELETA_VENDAS_LANCHES" />
+          <FunctionImportMapping FunctionImportName="USP_INSERIR_VENDAS_LANCHE" FunctionName="LanchesMutantModel.Store.USP_INSERIR_VENDAS_LANCHE" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

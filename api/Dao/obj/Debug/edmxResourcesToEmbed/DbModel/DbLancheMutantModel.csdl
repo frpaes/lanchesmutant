@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LanchesMutantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="USP_TB_INGREDIENTE" ReturnType="Collection(LanchesMutantModel.USP_TB_INGREDIENTE_Result)" />
+    <FunctionImport Name="USP_TB_LANCHE" ReturnType="Collection(LanchesMutantModel.USP_TB_LANCHE_Result)" />
+    <FunctionImport Name="USP_TB_LANCHE_INGREDIENTE" ReturnType="Collection(LanchesMutantModel.USP_TB_LANCHE_INGREDIENTE_Result)" />
+    <FunctionImport Name="USP_TB_DOMINIO" ReturnType="Collection(LanchesMutantModel.USP_TB_DOMINIO_Result)" />
+    <FunctionImport Name="USP_CARREGAR_VENDAS_LANCHE" ReturnType="Collection(LanchesMutantModel.USP_CARREGAR_VENDAS_LANCHE_Result)" />
+    <FunctionImport Name="USP_TB_VENDAS" ReturnType="Collection(LanchesMutantModel.USP_TB_VENDAS_Result)" />
+    <FunctionImport Name="USP_TB_VENDAS_LANCHES" ReturnType="Collection(LanchesMutantModel.USP_TB_VENDAS_LANCHES_Result)" />
+    <FunctionImport Name="USP_DELETA_VENDAS_LANCHES">
+      <Parameter Name="codigo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_INSERIR_VENDAS_LANCHE">
+      <Parameter Name="cod_lanche" Mode="In" Type="String" />
+      <Parameter Name="descricao_venda" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="USP_TB_INGREDIENTE_Result">
+    <Property Type="Int32" Name="COD_INGREDIENTE" Nullable="false" />
+    <Property Type="String" Name="INGREDIENTE" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="VALOR" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_TB_LANCHE_Result">
+    <Property Type="Int32" Name="COD_LANCHE" Nullable="false" />
+    <Property Type="String" Name="LANCHE" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="USP_TB_LANCHE_INGREDIENTE_Result">
+    <Property Type="Int32" Name="COD_LANCHE_INGREDIENTE" Nullable="false" />
+    <Property Type="Int32" Name="COD_LANCHE" Nullable="false" />
+    <Property Type="Int32" Name="COD_INGREDIENTE" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_TB_DOMINIO_Result">
+    <Property Type="Int32" Name="COD_DOMINO" Nullable="false" />
+    <Property Type="String" Name="DOMINIO" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESC_DOMINIO" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="COD_TIPO_DOMINO" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_CARREGAR_VENDAS_LANCHE_Result">
+    <Property Type="Int32" Name="CODIGO" Nullable="false" />
+    <Property Type="Int32" Name="COD_LANCHE" Nullable="false" />
+    <Property Type="String" Name="LANCHE" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="TIPO_LANCHE" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="INGREDIENTE" Nullable="true" />
+    <Property Type="Decimal" Name="VALOR" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_TB_VENDAS_Result">
+    <Property Type="Int32" Name="COD_VENDAS" Nullable="false" />
+    <Property Type="String" Name="DESC_VENDAS" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="USP_TB_VENDAS_LANCHES_Result">
+    <Property Type="Int32" Name="COD_VENDAS_LANCHE" Nullable="false" />
+    <Property Type="Int32" Name="COD_VENDAS" Nullable="false" />
+    <Property Type="Int32" Name="COD_LANCHE" Nullable="true" />
+    <Property Type="Int32" Name="COD_DOMINO" Nullable="true" />
+  </ComplexType>
+</Schema>
