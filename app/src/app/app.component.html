@@ -1,0 +1,90 @@
+<app-header></app-header>
+<table>
+  <tr>
+      <th></th>
+      <th></th>
+  </tr>
+  <tr>
+      <td></td>
+      <td></td>
+  </tr>
+
+</table> 
+<div class="container">
+  <div class="row justify-content-md-center">
+        <div *ngFor="let lan of lstLanches" class="card" style="width: 13rem;">
+          <img class="card-img-top" src={{getImage(lan.CodLanche)}} alt="Imagem de capa do card">
+          <div class="card-body">
+            <h5 class="card-title">{{lan.Lanche}}</h5>
+            <!-- <p *ngFor="let ingr of lan.Ingredientes" class="card-text">{{ingr.Ingrediente}}</p> -->
+            <ul *ngFor="let ingr of lan.Ingredientes" class="list-group list-group-flush">
+                <li class="list-group-item">{{ingr.Ingrediente}}</li>
+            </ul>
+
+            
+          </div>
+          <button type="button" class="btn btn-outline-success btn-xs" (click)="postLanches(lan)">
+            Adicionar
+          </button>
+         
+        </div>
+  </div>
+  <div [hidden]="!this.lstShopCart.length > 0">
+    <div class="card shopping-cart">
+        <div class="card-header bg-dark text-light">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            Carrinho
+            
+            <div class="clearfix"></div>
+        </div>
+        <div class="card-body">
+            <!-- PRODUCT -->
+            <div *ngFor="let shop of lstShopCart" class="row">
+                <div class="col-12 col-sm-12 col-md-2 text-center">
+                        <img class="img-responsive" src={{getImage(shop.codLanche)}} alt="prewiew" width="120" height="80">
+                </div>
+                <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                    <h4 class="product-name"><strong>{{shop.lanche}}</strong></h4>
+                    <h4>
+                        <small>{{shop.descricao}}</small>
+                    </h4>
+                </div>
+                <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                    <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+                        <h6><strong>R$ {{shop.valor}} <span class="text-muted">x</span></strong></h6>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <div class="quantity">
+                            <input type="number" step="1" max="99" min="1" value="{{shop.quantidade}}" title="Qty" class="qty"
+                                   size="4" (change)="changeQuantidade($event, shop.codLanche)">
+                            
+                        </div>
+                    </div>
+                    <div class="col-2 col-sm-2 col-md-2 text-right">
+                        <button type="button" class="btn btn-outline-danger btn-xs" (click)="removeLanche(shop.codLanche)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            
+        </div>
+        <div class="card-footer">
+            <div class="pull-left" style="margin: 10px">
+            <div class="pull-left" style="margin: 5px">
+                <button type="button" class="btn btn-outline-success btn-xs" (click)="postVendas()">
+                FINALIZAR VENDA
+                </button>
+            </div>
+        </div>
+            <div class="pull-right" style="margin: 10px">
+                <div class="pull-right" style="margin: 5px">
+                    Total: <b>R$ {{totalLanche()}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<router-outlet></router-outlet>
